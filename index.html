@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sasto Sawari – what should this ride cost?</title>
+<meta name="description" content="Official bus and taxi fares for Nepal, with the government notice to show the conductor.">
+<meta name="theme-color" content="#0A0F10">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sasto Sawari: what should this ride cost?">
+<meta property="og:description" content="Official bus and taxi fares for Nepal, with the government notice to show the conductor.">
+<meta property="og:image" content="https://sastosawari.github.io/sasto-sawari/logo.png">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=Chakra+Petch:wght@600&family=Hind:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand"><img src="logo.png" alt=""><b>Sasto Sawari</b></div>
+    <button class="linkbtn" id="open-sources">Sources and rules</button>
+  </div>
+  <nav class="tabs" aria-label="Sections">
+    <a href="#p-city" id="t-city" data-tab="city" aria-current="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg>
+      <span>City bus</span></a>
+    <a href="#p-inter" id="t-inter" data-tab="inter">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="2"/><path d="M7 18h4a4 4 0 0 0 0-8H9a4 4 0 0 1 0-8h5"/><path d="M19 2.5c1.7 0 3 1.2 3 2.8 0 2-3 4.700-3 4.700s-3-2.700-3-4.700c0-1.600 1.300-2.800 3-2.800z"/></svg>
+      <span>Intercity</span></a>
+    <a href="#p-apps" id="t-apps" data-tab="apps">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 7.500c1.400 0 2.500 1 2.500 2.300 0 1.800-2.500 4-2.500 4s-2.500-2.200-2.500-4c0-1.300 1.100-2.300 2.500-2.300z"/></svg>
+      <span>Ride apps</span></a>
+    <a href="#p-over" id="t-over" data-tab="over">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v5M12 18v.01"/></svg>
+      <span>Overcharged?</span></a>
+  </nav>
+</header>
+
+<main id="main" class="wrap">
+
+<!-- ================= CITY BUS ================= -->
+<section class="panel" id="p-city">
+  <h1>What should this ride cost?</h1>
+  <p class="lede">Type where you start and where you go. You get the official bus fare and a taxi estimate, and a screen to show the conductor.</p>
+
+  <div class="field">
+    <label for="citysel">City</label>
+    <select id="citysel">
+      <option value="ktm">Kathmandu Valley</option>
+      <option value="pkr">Pokhara</option>
+      <option value="any">Somewhere else in Nepal</option>
+    </select>
+  </div>
+  <div class="route">
+    <span class="dot" aria-hidden="true"></span><span class="pin" aria-hidden="true"></span>
+    <label for="from">From</label>
+    <input id="from" type="text" placeholder="Kalanki" autocomplete="off" autocapitalize="words">
+    <label for="to">To</label>
+    <input id="to" type="text" placeholder="Ratna Park" autocomplete="off" autocapitalize="words">
+  </div>
+  <details class="more kmopt">
+    <summary>The map is not working? I know the distance</summary>
+    <label for="cmanual">Distance (km)</label>
+    <input id="cmanual" type="number" inputmode="decimal" min="0" max="60" step="0.1" placeholder="8">
+  </details>
+  <div class="whoMount" data-who></div>
+  <button class="cta" id="calc">Show the official fare</button>
+  <div id="calcout" aria-live="polite"></div>
+</section>
+
+<!-- ================= INTERCITY ================= -->
+<section class="panel" id="p-inter">
+  <h2 class="ttl">Between cities</h2>
+  <p class="lede">Official fares for 280 long-distance routes. Type a place in either box, or both.</p>
+  <div class="seg" role="radiogroup" aria-label="Vehicle type">
+    <button role="radio" id="mode-ice" aria-checked="true">Bus, minibus, Hiace, jeep</button>
+    <button role="radio" id="mode-ev" aria-checked="false">Electric</button>
+  </div>
+  <div class="route route2">
+    <span class="dot" aria-hidden="true"></span><span class="pin" aria-hidden="true"></span>
+    <label for="lfrom">From</label>
+    <input id="lfrom" type="text" placeholder="Kathmandu" autocomplete="off">
+    <label for="lto">To</label>
+    <input id="lto" type="text" placeholder="Pokhara" autocomplete="off">
+  </div>
+  <div class="whoMount" data-who></div>
+  <p class="tip" id="booktip" hidden></p>
+  <div id="lout" aria-live="polite"></div>
+  <details class="more">
+    <summary>Hiace, Bolero, night buses: what the notice says</summary>
+    <ul>
+      <li><b>Hiace, minibus, micro bus, jeep (Bolero):</b> the department gives one fare list for public passenger vehicles and names bus, minibus, micro bus and jeep in its deluxe rules. It gives no separate Hiace or Bolero fare. If one runs a listed public route, ask the department which class applies.</li>
+      <li><b>Deluxe and super deluxe:</b> a vehicle may add 20% for deluxe, and another 20% on the deluxe fare for super deluxe, only after the department's test office has certified that class.</li>
+      <li><b>Night buses:</b> the notice has no night surcharge. It only requires two drivers on long-distance night buses.</li>
+      <li><b>Inside Gandaki Province:</b> jeeps Rs 7 per km, buses Rs 4 per km (province notice, May 2026).</li>
+    </ul>
+  </details>
+  <p class="fine" id="lsrc"></p>
+</section>
+
+<!-- ================= RIDE APPS ================= -->
+<section class="panel" id="p-apps">
+  <h2 class="ttl">Ride apps, early readings</h2>
+  <div class="early"><b>Early data.</b> One or two readings per route from 14 Nov 2026, read from each app's own price screen. Treat each number as a first impression. Pathao and inDrive are not included yet.</div>
+  <div class="two">
+    <div class="field"><label for="route">Route</label><select id="route"></select></div>
+    <div class="field"><label for="veh">Vehicle</label>
+      <select id="veh"><option value="bike">Bike</option><option value="car_economy">Car economy</option><option value="car_comfort">Car comfort</option></select></div>
+  </div>
+  <div id="cmp"></div>
+  <h2>Was the app fare high?</h2>
+  <div class="field"><label for="paid">The fare you were quoted or paid (Rs)</label>
+    <input id="paid" type="number" inputmode="decimal" min="0" placeholder="450"></div>
+  <button class="cta" id="check">Check against the readings</button>
+  <div id="verdict" aria-live="polite"></div>
+  <p class="fine">There is no final official fare for ride apps yet. A cap of Rs 25/km for bikes and Rs 55/km for cars has been proposed but is a draft (<a href="https://kathmandupost.com/money/2026/08/13/ride-hailing-riders-suspend-protest-but-fare-dispute-remains-unresolved">Kathmandu Post</a>).</p>
+  <a class="cta ghost" href="https://tally.so/r/BEdoaR">Share a fare you saw</a>
+</section>
+
+<!-- ================= OVERCHARGED ================= -->
+<section class="panel" id="p-over">
+  <h2 class="ttl">Were you overcharged?</h2>
+  <div class="quick">
+    <a class="cta gold" id="hs-open" href="https://gunaso.opmcm.gov.np/admin/Complain-Files/119/Complaints%20asked%20for%20transportation/" target="_blank" rel="noopener"><span>File an official complaint</span><small>Hello Sarkar, the government portal. Opens on the transport type.</small></a>
+    <div class="calls compact">
+      <a class="call" href="tel:103"><b>103</b><span>Traffic police</span></a>
+      <a class="call" href="tel:1111"><b>1111</b><span>Hello Sarkar, free</span></a>
+    </div>
+    <p class="fine">On the form choose "charged extra fare" (बढी भाडा लिएको).</p>
+  </div>
+  <h3 class="sub">Check the fare first</h3>
+  <p class="lede">Type your trip and what the conductor asked. We compare it with the official bus fare.</p>
+  <div class="field"><label for="ocity">City</label>
+    <select id="ocity"><option value="ktm">Kathmandu Valley</option><option value="pkr">Pokhara</option></select></div>
+  <div class="route">
+    <span class="dot" aria-hidden="true"></span><span class="pin" aria-hidden="true"></span>
+    <label for="ofrom">From</label>
+    <input id="ofrom" type="text" placeholder="Kalanki" autocomplete="off" autocapitalize="words">
+    <label for="oto">To</label>
+    <input id="oto" type="text" placeholder="Ratna Park" autocomplete="off" autocapitalize="words">
+  </div>
+  <div class="field"><label for="buspaid">What the conductor asked (Rs)</label>
+    <input id="buspaid" type="number" inputmode="decimal" min="0" placeholder="40"></div>
+  <details class="more kmopt">
+    <summary>I already know the distance</summary>
+    <label for="buskm">Distance (km)</label>
+    <input id="buskm" type="number" inputmode="decimal" min="0" max="60" step="0.1" placeholder="8">
+  </details>
+  <div class="whoMount" data-who></div>
+  <button class="cta" id="buscheck">Check my bus fare</button>
+  <div id="busverdict" aria-live="polite"></div>
+
+  <div class="report" id="report">
+    <h2>Prefer WhatsApp or email?</h2>
+    <details class="more">
+      <summary>Write the complaint text for me</summary>
+      <label for="cnote">Text to paste into "Other details" or read out on the phone</label>
+      <textarea id="cnote" rows="6" placeholder="Fill in the bus check above first, then tap Write the text."></textarea>
+      <div class="two">
+        <button class="cta" id="cmake">Write the text</button>
+        <button class="cta ghost" id="ccopy">Copy</button>
+      </div>
+      <div class="two">
+        <a class="cta ghost" id="sendwa" href="https://wa.me/9779851145045" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="cta ghost" id="sendml" href="mailto:1111@nepal.gov.np">Email</a>
+      </div>
+      <p class="fine">These open WhatsApp or your email app addressed to Hello Sarkar's own number and address. You check the text and press send yourself.</p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap foot">
+  <div class="links">
+    <a href="https://excited-basket-403.notion.site/Sasto-Sawari-Fare-Watch-418aacdcf9a480f8b45eda52bdd061a4">Fare table</a>
+    <a href="https://www.facebook.com/profile.php?id=61596250064035">Facebook</a>
+  </div>
+  <p class="next"><b>Coming next:</b> a Nepali version, Pathao and inDrive prices, and official fares for more cities as the notices are found.</p>
+  <p>Sasto Sawari is an independent community project. Fares change with fuel prices, so check the notice. Not affiliated with any ride app or government body.</p>
+</footer>
+
+<!-- conductor proof -->
+<dialog id="proof" class="proof" aria-label="Official fare to show the conductor"></dialog>
+
+<!-- sources -->
+<dialog id="sources" class="sheet" aria-label="Sources and rules">
+  <div class="sheet-in">
+    <div class="sheet-top"><h2>Sources and rules</h2><button class="pf-x" id="srcx">Close</button></div>
+    <h3>Official fare notices</h3>
+    <ul class="src">
+      <li><b>Kathmandu Valley buses and taxis.</b> Bagmati Province Gazette, notice of 2082-12-27 BS, in force from 2082-12-28 BS (11 April 2026). <a href="https://molet.bagamati.gov.np/content/60/notification-regarding-fare-determination-adjustment-of-public-vehicles/">Official page</a></li>
+      <li><b>Pokhara city bus, taxis, jeeps.</b> Gandaki Province, notice of 2083-01-22 BS, in force from 2083-01-23 BS (6 May 2026). <a href="https://mopid.gandaki.gov.np/post/pa-ratha-shabha-ta-raka-sa-ra-vajana-ka-sava-ra-sa-thhanaka-bha-da-sama-ya-jana">Official page</a></li>
+      <li><b>Long-distance buses.</b> Department of Transport Management fare list, read 15 Nov 2026. <a href="https://dotm.gov.np/pages/find-rental-rates/">Official list</a></li>
+      <li><b>Electric vehicles.</b> Department of Transport Management, table dated 2081-09-22 BS, posted 22 Asoj 2083. <a href="https://dotm.gov.np/content/128/adjusted-fares-for-electric-powered-vehicles/">Official page</a></li>
+    </ul>
+    <h3>Discounts</h3>
+    <ul class="src">
+      <li><b>All concession classes.</b> The department's notice of 16 Baisakh 2083 says students, people with disabilities, people disabled in the people's movement and senior citizens must get a concession at the prescribed rate, on showing the original ID, with no limit on route, quota, day or time. It does not state the rate. <a href="https://dotm.gov.np/content/68/fares-effective-from-20830116/">Official notice</a></li>
+      <li><b>Students: 45% (reported).</b> The department wrote to operators in Baisakh 2083 (April 2026) to enforce it, based on the 2065-11-20 BS decision. Source is a news report, the letter itself was not opened. <a href="https://nonstopkhabar.com/archives/94742">Nonstop Khabar</a></li>
+      <li><b>Senior citizens: at least 50% (reported).</b> Senior Citizens Act 2063, section 9: two reserved seats and at least 50% off. On 26 Shrawan 2083 (11 Aug 2026) the social security ministry asked the transport ministry to enforce it. The 2070 procedure is reported to apply it to the two reserved seats. <a href="https://www.onlinekhabar.com/2026/08/1994054/50-percent-fare-discount-for-senior-citizens-on-public-transportation-will-be-mandatory">Onlinekhabar</a></li>
+      <li><b>People with disabilities.</b> The discount must be given but no rate was found, so none is applied here.</li>
+    </ul>
+    <h3>How the numbers are made</h3>
+    <ul class="src">
+      <li>Map data © OpenStreetMap contributors. Small local stops use exact bus-stop positions from OpenStreetMap, and Gairigaun Petrol Pump uses its Google Maps position. Distances come from OpenStreetMap routing between the two places you type. A conductor's distance may differ a little, so near a price step we show both fares.</li>
+      <li>Taxi figures are estimates from the official meter rates. A real meter counts the route driven and waiting time.</li>
+      <li>Ride-app prices are read by hand from each app's own price screen at a recorded time. Uber is shown at its standard price, before personal promotions.</li>
+      <li>We use areas only. No names, phone numbers or number plates. We are independent of every ride app.</li>
+    </ul>
+    <button class="cta" id="srcx2">Close</button>
+  </div>
+</dialog>
+
+<script src="data.js"></script>
+<script src="fares.js"></script>
+<script src="dropdown.js"></script>
+<script src="points.js"></script>
+<script src="geo.js"></script>
+<script src="proof.js"></script>
+<script src="calc.js"></script>
+<script src="long.js"></script>
+<script src="longui.js"></script>
+<script src="check.js"></script>
+<script src="apps.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
