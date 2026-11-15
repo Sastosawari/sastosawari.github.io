@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sastosawari.github.io/sitemap.xml

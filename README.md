@@ -2,7 +2,7 @@
 
 Free community site for riders in Nepal: official bus and taxi fares, a screen to show the conductor, and how to complain about an overcharge.
 
-Live site: https://sastosawari.github.io/sasto-sawari/
+Live site: https://sastosawari.github.io/
 
 - Fares come from official notices: the Bagmati Province Gazette (Kathmandu Valley), the Gandaki Province notice (Pokhara), and the Department of Transport Management fare lists (long-distance and electric). Every number on the site links to its source.
 - Student (45%) and senior citizen (50%) discounts are shown as reported rules, not as the official fare.
